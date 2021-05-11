@@ -1,0 +1,131 @@
+
+NoSQL LIST QUERY
+db.Registeration.aggregate([{"$project":{"firstName":1,"lastName":1,"Weight":1,"Height":1,"country":"$UserAddress.country"}}])
+
+Register:
+
+POST:
+
+URL:localhost:8090/user/create
+
+Request:
+
+{
+"firstName":"keerthana",
+"lastName":"Ramasamy",
+"middleName":"S.P",
+"emailId":"keerthana@gmail.com",
+"password":"Keer@123",
+"phoneNumber":"8665644666",
+"weight":"50kg",
+"height":"165cm",
+"address":"middle Street",
+"country":"India",
+"state":"TamilNadu",
+"zipcode":"5625UI5"
+}
+
+Response:
+{
+    "Message": "Insered Successfully"
+}
+
+
+==========
+Update:
+
+POST:
+
+URl:localhost:8090/user/update
+
+Request:
+{
+"id":"60995b5eac900470ae58b5d6",
+"firstName":"kkk",
+"lastName":"nnn",
+"middleName":"S.P",
+"emailId":"nanthini@gmail.com",
+"password":"Keer@123",
+"phoneNumber":"8665044666",
+"weight":"50kg",
+"height":"165cm",
+"address":"middle Street",
+"country":"India",
+"state":"TamilNadu",
+"zipcode":"5625NI5"
+}
+
+Response:
+
+{
+    "Message": "Updated Successfully"
+}
+=========
+
+List:
+
+POST:
+
+URL:localhost:8090/user/list
+
+Requst:
+{
+"pagesize":2,
+"index":0
+}
+
+Response:
+[
+    {
+        "id": 1,
+        "firstName": "kkk",
+        "lastName": "nnn",
+        "country": "India",
+        "height": "165cm",
+        "weight": "50kg"
+    }
+]
+
+==========
+Delete:
+
+Post:
+
+URL:localhost:8090/user/delete
+
+Request:
+
+{
+	"id":"60995b5eac900470ae58b5d6"
+}
+
+Response:
+
+{
+    "message": "deleted successfully",
+    "status": "success"
+}
+
+
+=========
+
+Login:
+
+Url:localhost:8090/user/login
+
+Request:
+
+{
+
+"emailId":"keerthana@gmail.com",
+"password":"Keer@123"
+
+}
+
+Response
+
+
+{
+    "message": "LOGIN SUCCESSFULLY",
+    "status": "sccuess"
+}
