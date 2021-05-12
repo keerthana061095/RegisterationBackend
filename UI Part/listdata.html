@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>List</title>
+<!-- Latest compiled and minified CSS -->
+<!—Jquery Datatable css -->  
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">  
+<!—Jquery Js script -->  
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>  
+<!—Jquery Datatable js script -->  
+<!-- DataTables -->  
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>  
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    	<div class="row">
+			<div class="col-md-12 c">
+			<table id="userTable" style=" width: 100%; border: 1px solid red;">  
+    <thead>  
+        <tr>  
+            <th>Id</th>  
+            <th>FirstName</th>  
+            <th>LastName </th>  
+            <th>Country</th>  
+            <th>Height</th>
+             <th>Weight</th>  
+ 
+        </tr>  
+    </thead>  
+    <tbody id="tBody"> </tbody>  
+</table>  
+			</div>
+		</div>
+	</div>
+
+	</body>
+<script>  
+    $(document).ready(function() {  
+        $.ajax({  
+            type: "POST",  
+            url: "http://localhost:8089/form/list",  
+            dataType: "json",  
+            contentType: "application/json",  
+            success: function(response) {  
+                $.each(response.d, function(index, value) {  
+                    var tr = "<tr>";  
+                    tr += "<td>" + value.Id + "</td>";  
+                    tr += "<td>" + value.firstName + "</td>";  
+                    tr += "<td>" + value.lastName + "</td>";  
+                    tr += "<td>" + value.country + "</td>";  
+                    tr += "<td>" + value.height + "</td>";
+                      tr += "<td>" + value.weight + "</td>";  
+                    tr += "<td>" + "<input type='button' id='" + value.Id + "' onclick='CallMe(" + value.Id + ")' value='Delete'>" + "</td>" + "</tr>";  
+                    $("#tBody").append(tr);  
+                });  
+                $("#userTable").DataTable();  
+            }  
+        });  
+    });  
+
+
+    function CallMe(data) {  
+    alert(data);  
+}. 
+</script>  
+</html>

@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="build/css/countrySelect.css">
+		<link rel="stylesheet" href="build/css/demo.css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- <div class="container">
+    	<div class="row">
+			<div class="col-md-12">
+				<ul class="listings">
+					<li><a href="listdata.html">User List</a></li>
+					<li><a href="listdata.html">List</a></li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+
+
+<div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="#" id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" action="localhost:8090/form/login" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input type="email" name="emailId" id="emailId" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group text-center">
+										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+										<label for="remember"> Remember Me</label>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit"  tabindex="4" class="form-control btn btn-login" value="Log In">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="localhost:8090/form/create" method="post" role="form" style="display: none;">
+									<div class="form-group">
+										<input type="text" name="firstName" id="firstName" tabindex="1" class="form-control" placeholder="Enter FirstName" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="lastName" id="lastName" tabindex="1" class="form-control" placeholder="Enter LastName" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="middleName" id="middleName" tabindex="1" class="form-control" placeholder="Enter MiddleName" value="">
+									</div>
+									<div class="form-group">
+										<input type="email" name="emailId" id="emailId" tabindex="1" class="form-control" placeholder="Enter EmailId " value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Enter Password">
+									</div>
+									<div class="form-group">
+										<input type="phone" name="phoneNumber" id="phoneNumber" tabindex="2" class="form-control" placeholder="Confirm PhoneNumber">
+									</div>
+									<div class="form-group">
+										<input type="text" name="weight" id="weight" tabindex="2" class="form-control" placeholder="Confirm Weight">
+									</div>
+									<div class="form-group">
+										<input type="number" name="height" id="height" tabindex="2" class="form-control" placeholder="Confirm height">
+									</div>
+
+				<div class="form-group">
+				<input id="country_selector" tabindex="2" class="form-control" type="text">
+				<label for="country_selector" style="display:none;">Select a country here...</label>
+			</div>
+			<div class="form-item" style="display:none;">
+				<input type="text" id="country_selector_code" name="country_selector_code" tabindex="2" class="form-control" data-countrycodeinput="1" readonly="readonly" placeholder="Selected country code will appear here" />
+				<label for="country_selector_code">...and the selected country code will be updated here</label>
+			</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ <div id="result"></div>
+	</body>
+	<!-- Load jQuery from CDN so can run demo immediately -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="build/js/countrySelect.js"></script>
+		<script>
+			$("#country_selector").countrySelect({
+				preferredCountries: ['ca', 'gb', 'us']
+			});
+		</script>
+	<script type="text/javascript">
+		$(function() {
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		//e.preventDefault();
+
+
+		 event.preventDefault();
+        var formValues= $(this).serialize();
+        var actionUrl = $(this).attr("action");
+        //formValues: '{"emailId":"keerthana@gmail.com", "password":"Keer@123"}',
+        $.post(actionUrl, formValues, function(data){
+        	alert(data, 'data');
+        	console.log(data, 'data');
+            // Display the returned data in browser
+            $("#result").html(data);
+        });
+	});
+
+
+
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		//e.preventDefault();
+	    event.preventDefault();
+        var formValues= $(this).serialize();
+        var actionUrl = $(this).attr("action");
+        $.post(actionUrl, formValues, function(data){
+        	alert(data, 'data');
+        	console.log(data, 'data');
+            // Display the returned data in browser
+            $("#result").html(data);
+        });
+	});
+
+});
+
+	</script>
+		<script>
+			$("#country_selector").countrySelect({
+				preferredCountries: ['ca', 'gb', 'us']
+			});
+		</script>
+		<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+
+</html>
